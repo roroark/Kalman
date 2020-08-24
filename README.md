@@ -1,8 +1,9 @@
 ## 2D Position Estimation using the Kalman Filtering Technique
-Most of the code in this repository is standard code available online. The SPARKV Experiment code provided in its CD forms the skeleton of the Embedded C code. Majority of the work done involved tailoring the code to meet my needs and figuring out why things refused to work without warning owing to the unnecessary complexity of the circuit.
+This repository contains the code used in one of my undergrad lab projects. The 2D location of a Spark V robot had to be estimated, given the odometer readings of the two wheels. Every time a wheel turned 21.14deg, the corresponding odometer register incremented by 1. This corresponded to 0.65cm of travelled distance. Kalman filterning was used to minimize noise in input readings.
 
 <img width="25%" alt="Screenshot 2020-08-24 at 7 22 11 PM" src="https://user-images.githubusercontent.com/18059416/91052620-56b12700-e63f-11ea-9a19-f3e4e71e8f16.png">
 
+ A Kalman Filter essentially estimates a quantity as a function of its current (sensor) value and past few values. The Kalman equations are described in the Matlab code.
 
 ## Hardware Description
 The original plan was to use the I2C port of the SPARKV to connect the HMC5883L Magnetometer and relay all data (including on-board position encoder data) wirelessly to MATLAB for processing over the Zigbee protocol. Unfortunately the I2C port malfunctioned during a critical phase and the following hardware was used instead:
